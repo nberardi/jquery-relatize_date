@@ -6,8 +6,14 @@
     })
   }
 
-  $.relatizeDate = function(element) {
-    return $.relatizeDate.timeAgoInWords( new Date($(element).text()) )
+  $.relatizeDate = function (element) {
+    var text = $(element).text();
+
+    if ($(element).is("time"))
+      text = $(element).attr("datetime");
+
+    var date = new Date(text);
+    return $.relatizeDate.timeAgoInWords(date);
   }
 
   // shortcut
